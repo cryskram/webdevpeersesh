@@ -17,8 +17,18 @@ const TOGGLE_STATUS = gql`
 `;
 
 const Entry = ({ name, usn, dept, status, id }: EntryProp) => {
-  const [toggle] = useMutation(TOGGLE_STATUS);
-
+  const [toggle] = useMutation(TOGGLE_STATUS, {
+    update(cache, { data: { toggle } }) {
+      cache.modify({
+        id: cache.identify({ __typename: "Participant", id }),
+        fields: {
+          isPresent() {
+            return toggle.isPresent;
+          },
+        },
+      });
+    },
+  });
   const handleToggle = (id: string) => {
     toggle({ variables: { id } })
       .then(() => {
