@@ -6,4 +6,10 @@ import { startServerAndCreateNextHandler } from "@as-integrations/next";
 const server = new ApolloServer({ typeDefs: typeDef, resolvers: resolvers });
 const handler = startServerAndCreateNextHandler(server);
 
-export { handler as GET, handler as POST };
+export async function GET(req: Request) {
+  return handler(req);
+}
+
+export async function POST(req: Request) {
+  return handler(req);
+}
