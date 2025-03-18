@@ -1,0 +1,23 @@
+export const depts = {
+  data: [
+    "Aerospace Engineering",
+    "Artificial Intelligence and Machine Learning",
+    "Biotechnology",
+    "Chemical Engineering",
+    "Civil Engineering",
+    ,
+    "Electrical and Electronics Engineering",
+    "Electronics and Communication Engineering",
+    "Electronics and Instrumentation Engineering",
+    "Electronics and Telecommunication Engineering",
+    "Industrial Engineering and Management",
+    "Information Science and Engineering",
+    "Mechanical Engineering",
+    "Medical Electronics",
+    "Computer Science Engineering",
+    "Computer Science and Engineering Internet of Things",
+    "Computer Science and Engineering Data Science",
+    "Artificial Intelligence and Data Science",
+    "Computer Science and Business Systems",
+  ],
+};
