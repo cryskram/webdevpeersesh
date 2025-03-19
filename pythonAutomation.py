@@ -1,5 +1,5 @@
 import pandas as pd
-import os
+import time
 import json
 import requests
 
@@ -8,7 +8,7 @@ df = pd.read_csv("data.csv")
 URL = "http://localhost:3000/api/graphql"
 
 for idx, row in df.iterrows():
-    name = row["name"]
+    name: str = row["name"]
     email = row["email"]
     usn = row["usn"]
     dept = row["dept"]
@@ -29,7 +29,7 @@ for idx, row in df.iterrows():
     """
 
     variables = {
-        "name": name.trim(),
+        "name": name.strip(),
         "email": email,
         "usn": usn,
         "dept": dept,
@@ -41,6 +41,8 @@ for idx, row in df.iterrows():
         headers={"Content-Type": "application/json"},
         data=json.dumps({"query": query, "variables": variables}),
     )
+
+    time.sleep(1)
 
     if response.status_code == 200:
         print(f"{name} added on database")

@@ -10,6 +10,7 @@ const EntryTable = ({ participants }: EntryTableProps) => {
     <table className="w-full border-collapse border border-gray-300">
       <thead>
         <tr className="bg-gray-800 text-white">
+          <th className="border border-gray-300 px-4 py-2">Idx</th>
           <th className="border border-gray-300 px-4 py-2">Name</th>
           <th className="border border-gray-300 px-4 py-2">USN</th>
           <th className="border border-gray-300 px-4 py-2">Department</th>
@@ -17,14 +18,15 @@ const EntryTable = ({ participants }: EntryTableProps) => {
         </tr>
       </thead>
       <tbody>
-        {participants.map((participant) => (
+        {participants.map((participant, idx) => (
           <Entry
-            key={participant.id}
+            key={idx}
             name={participant.name}
             usn={participant.usn}
             dept={participant.dept}
             status={participant.isPresent}
             id={participant.id}
+            idx={idx + 1}
           />
         ))}
       </tbody>

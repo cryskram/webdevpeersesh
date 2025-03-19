@@ -6,6 +6,7 @@ interface EntryProp {
   dept: string;
   status: boolean;
   id: string;
+  idx: number;
 }
 
 const TOGGLE_STATUS = gql`
@@ -16,7 +17,7 @@ const TOGGLE_STATUS = gql`
   }
 `;
 
-const Entry = ({ name, usn, dept, status, id }: EntryProp) => {
+const Entry = ({ name, usn, dept, status, id, idx }: EntryProp) => {
   const [toggle] = useMutation(TOGGLE_STATUS, {
     update(cache, { data: { toggle } }) {
       cache.modify({
@@ -41,6 +42,7 @@ const Entry = ({ name, usn, dept, status, id }: EntryProp) => {
 
   return (
     <tr className="">
+      <td className="border border-gray-300 px-4 py-2">{idx}</td>
       <td className="border border-gray-300 px-4 py-2">{name}</td>
       <td className="border border-gray-300 px-4 py-2">{usn}</td>
       <td className="border border-gray-300 px-4 py-2">{dept}</td>
